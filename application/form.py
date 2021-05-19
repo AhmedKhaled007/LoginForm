@@ -1,13 +1,5 @@
-from flask import Flask, request
-from flask.templating import render_template
+
 from wtforms import Form, StringField, PasswordField, validators
-
-app = Flask(__name__)
-
-
-@app.route('/')
-def index():
-    return "Hello"
 
 
 class RegistrationForm(Form):
@@ -22,12 +14,3 @@ class RegistrationForm(Form):
         validators.EqualTo('confirm', 'Password do not match')
     ])
     confirm = PasswordField('Confirm Password')
-
-
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    form = RegistrationForm(request.form)
-    if request.method == 'POST' and form.validate():
-        pass
-    else:
-        return render_template('register.html', form=form)
