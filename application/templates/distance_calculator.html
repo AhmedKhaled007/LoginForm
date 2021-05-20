@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>Distance Calculator</h1>
+
+  <small> hint for example try "Cairo" and "Alexandria" to calcuate distance</small>
+  <form action="" method="POST">
+    <div class="form-group">
+      <label>Origin</label>
+      <input type="text" name="origin" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>destination</label>
+      <input type="text" name="destination" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+ <br>
+{% if travel_info %}
+ <p> <h2>Trip Info</h2>
+   <p> origin = {{travel_info.origin}}</p>
+   <p> destination = {{travel_info.destination}}</p>
+   <p> distance = {{ travel_info.distance }}</p>
+   <p> time = {{ travel_info.time}}</p>
+{% endif %}
+    {% endblock %}
